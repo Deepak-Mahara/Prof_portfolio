@@ -119,11 +119,15 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    cursor: none !important;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[#FCFCFC] text-black tracking-tight;
+    background-image: url("data:image/svg+xml,%3Csvg width='320' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='70' font-family='sans-serif' font-size='42' font-weight='bold' fill='rgba(0,0,0,0.025)' letter-spacing='32'%3EO M I M O%3C/text%3E%3C/svg%3E");
+    background-position: top left;
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 }
