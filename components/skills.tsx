@@ -22,14 +22,14 @@ export function Skills() {
     <section id="skills" className="w-full py-16 md:py-24 px-6 relative z-20 text-white mix-blend-difference pointer-events-none">
       <div className="max-w-6xl mx-auto pointer-events-auto">
         <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true, margin: "-100px" }}
-           transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
         >
           <div className="relative mb-20 md:mb-32">
             <h2 className="text-4xl md:text-6xl lg:text-[5rem] font-bold tracking-tighter leading-none relative z-10">
-              Skills &<br/>Expertise
+              Skills &<br />Expertise
             </h2>
             <span className="absolute -top-12 -left-4 md:-top-16 text-[8rem] md:text-[12rem] font-bold text-white/10 tracking-tighter select-none z-0">
               02
