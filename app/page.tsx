@@ -102,52 +102,52 @@ export default function Home() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
-          className="relative z-20 flex items-center justify-center w-[320px] h-[320px] sm:w-[440px] sm:h-[440px] lg:w-[600px] lg:h-[600px] mt-4 md:mt-0"
+          className="relative z-20 flex items-center justify-center w-[360px] h-[360px] aspect-square sm:w-[440px] sm:h-[440px] lg:w-[600px] lg:h-[600px] mt-4 md:mt-0"
         >
           {/* Floating animation wrapper */}
           <motion.div
             animate={{ y: [-15, 15, -15] }}
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            className="w-full h-full relative"
+            className="w-full h-full relative flex items-center justify-center"
           >
             {/* Soft shadow/glow layer for depth */}
             <div className="absolute inset-0 rounded-full bg-black/20 blur-[60px] md:blur-[100px] scale-110 pointer-events-none" />
 
-            <div className="relative w-full h-full rounded-full bg-black flex items-center justify-center shadow-2xl transition-transform duration-700 group">
+            <div className="relative w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden shadow-2xl transition-transform duration-700 group">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="text-center px-4 flex flex-col items-center justify-center"
+                className="text-center px-4 sm:px-4 flex flex-col items-center justify-center gap-2 sm:gap-0"
               >
-                <h1 className="text-white text-6xl sm:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[1.05] mb-4 group-hover:tracking-tight transition-all duration-500">
+                <h1 className="text-white text-5xl sm:text-7xl lg:text-[6rem] font-bold tracking-tighter leading-[1.05] sm:mb-4 group-hover:tracking-tight transition-all duration-500">
                   Hi, I'm<br />Deepak
                 </h1>
-                <h2 className="text-white/90 text-xs sm:text-sm md:text-base font-medium tracking-[0.2em] md:tracking-[0.3em] uppercase mb-4 md:mb-6 group-hover:text-white transition-colors duration-500">
+                <h2 className="text-white/90 text-[11px] sm:text-sm md:text-base font-medium tracking-[0.18em] sm:tracking-[0.2em] md:tracking-[0.3em] uppercase sm:mb-4 md:mb-6 group-hover:text-white transition-colors duration-500">
                   Full Stack Developer
                 </h2>
-                <p className="text-white/50 text-[10px] sm:text-xs md:text-sm font-light max-w-[200px] lg:max-w-[300px] leading-relaxed group-hover:text-white/70 transition-colors duration-500">
+                <p className="text-white/50 text-[10px] sm:text-xs md:text-sm font-light max-w-[190px] sm:max-w-[200px] lg:max-w-[300px] leading-relaxed group-hover:text-white/70 transition-colors duration-500">
                   Building elegant web experiences and robust architectures.
                 </p>
-                <div className="flex items-center justify-center gap-3 sm:gap-4 mt-8 lg:mt-10 pointer-events-auto cursor-auto">
+                <div className="flex items-center justify-center gap-3 sm:gap-4 sm:mt-8 lg:mt-10 pointer-events-auto cursor-auto">
                   <motion.a
                     href="#projects"
                     whileTap={{ scale: 0.95 }}
-                    className="px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full bg-white text-black text-[10px] sm:text-xs font-medium hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-lg cursor-none"
+                    className="px-5 py-2 sm:px-8 sm:py-3.5 rounded-full bg-white text-black text-xs sm:text-xs font-medium hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-lg cursor-none"
                   >
                     View Projects
                   </motion.a>
                   <motion.a
                     href="#contact"
                     whileTap={{ scale: 0.95 }}
-                    className="px-5 py-2.5 sm:px-8 sm:py-3.5 rounded-full border border-white/30 text-white text-[10px] sm:text-xs font-medium hover:border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 cursor-none"
+                    className="px-5 py-2 sm:px-8 sm:py-3.5 rounded-full border border-white/30 text-white text-xs sm:text-xs font-medium hover:border-white hover:bg-white/10 hover:scale-105 transition-all duration-300 cursor-none"
                   >
                     Contact Me
                   </motion.a>
                 </div>
 
                 {/* Social Icons */}
-                <div className="flex items-center justify-center gap-6 mt-6 sm:mt-8 pointer-events-auto">
+                <div className="flex items-center justify-center gap-5 sm:gap-6 sm:mt-8 pointer-events-auto">
                   <motion.a
                     href="https://github.com//Deepak-Mahara"
                     target="_blank"
@@ -168,7 +168,7 @@ export default function Home() {
                     className="text-white/60 hover:text-white transition-all duration-300 cursor-none flex items-center justify-center"
                     aria-label="LeetCode"
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px]">
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-[17px] h-[17px] sm:w-[22px] sm:h-[22px]">
                       <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.705-1.099-.705-1.823s.238-1.356.705-1.824l4.319-4.38c.467-.467 1.112-.662 1.824-.662s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-7.361 0l-4.32 4.38c-1.01 1.01-1.517 2.338-1.517 3.844 0 1.505.507 2.833 1.517 3.844l4.332 4.363a5.055 5.055 0 0 0 7.36 0l2.609-2.636c.514-.514.496-1.365-.039-1.9-.535-.536-1.386-.554-1.9-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z" />
                     </svg>
                   </motion.a>

@@ -6,17 +6,30 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
   // Inner cursor (dot) position
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-  
+
   // Outer cursor (circle) layout values - adding some lag and smoothness
   const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
+  // Detect touch/coarse-pointer devices (phones, tablets)
   useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    setIsTouchDevice(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsTouchDevice(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    // Don't wire up any cursor events on touch devices
+    if (isTouchDevice) return;
+
     const moveCursor = (e: MouseEvent) => {
       if (!isVisible) setIsVisible(true);
       cursorX.set(e.clientX);
@@ -50,9 +63,10 @@ export function CustomCursor() {
       window.removeEventListener("mouseover", handleMouseOver);
       document.body.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [cursorX, cursorY, isVisible, isTouchDevice]);
 
-  if (!isVisible) return null;
+  // Never render on touch devices, or before the cursor has moved into view
+  if (isTouchDevice || !isVisible) return null;
 
   return (
     <>

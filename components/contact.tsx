@@ -50,7 +50,7 @@ export function Contact() {
                 whileHover={{ scale: 1.05 }}
                 className="group flex flex-col sm:flex-row items-center justify-center gap-4 px-8 py-4 bg-black/5 hover:bg-black/10 text-black text-sm lg:text-base font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow-md cursor-none"
               >
-                Or Email Me Directly <Mail className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                Email Me Directly <Mail className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               </motion.a>
             </div>
           </motion.div>

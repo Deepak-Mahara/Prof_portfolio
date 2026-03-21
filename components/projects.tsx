@@ -47,15 +47,15 @@ export function Projects() {
                   <Link href={`/project/${project.slug}`} className="absolute inset-0 z-10 pointer-events-auto cursor-none" />
 
                   <div className="flex flex-col h-full z-10 text-black pointer-events-none">
-                    <h3 className={`font-bold tracking-tight mb-4 group-hover:opacity-20 transition-opacity duration-500 ${isFeatured ? 'text-4xl md:text-6xl lg:text-7xl' : 'text-3xl'}`}>
+                    <h3 className={`font-bold tracking-tight mb-4 group-hover:opacity-10 transition-opacity duration-500 ${isFeatured ? 'text-4xl md:text-6xl lg:text-7xl' : 'text-3xl'}`}>
                       {project.title}
                     </h3>
 
-                    <p className={`text-black/70 font-light leading-relaxed mb-12 flex-grow group-hover:opacity-20 transition-opacity duration-500 ${isFeatured ? 'text-xl md:text-2xl lg:text-3xl max-w-3xl' : 'text-lg md:text-xl'}`}>
+                    <p className={`text-black/70 font-light leading-relaxed mb-12 flex-grow group-hover:opacity-10 transition-opacity duration-500 ${isFeatured ? 'text-xl md:text-2xl lg:text-3xl max-w-3xl' : 'text-lg md:text-xl'}`}>
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-3 mt-auto group-hover:opacity-20 transition-opacity duration-500">
+                    <div className="flex flex-wrap gap-3 mt-auto group-hover:opacity-10 transition-opacity duration-500">
                       {project.tech?.map(tech => (
                         <span
                           key={tech}
@@ -68,7 +68,7 @@ export function Projects() {
                   </div>
 
                   {/* Glassmorphic Hover Overlay */}
-                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/80 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/25 backdrop-blur-xl ring-1 ring-white/20 rounded-[2rem] md:rounded-[3rem] opacity-0 scale-[0.97] group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-out pointer-events-none">
                     <div className="flex flex-wrap justify-center items-center gap-4 pointer-events-auto relative z-30">
                       <Link
                         href={`/project/${project.slug}`}
