@@ -1,0 +1,2 @@
+certificate loading/progress bar
+flat icon/sight icon
