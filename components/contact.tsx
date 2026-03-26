@@ -6,22 +6,37 @@ import { useState } from "react";
 
 export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thanks for your message! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Thanks for your message! I'll get back to you soon.");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        alert("Something went wrong. Please try emailing me directly.");
+      }
+    } catch (error) {
+      alert("Error sending message. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="w-full pt-32 md:pt-40 pb-8 px-6 relative z-10 bg-[#FCFCFC] text-black -mt-8 md:-mt-16">
-      {/* Soft gradient overlay blending the hard cut into the background pattern over the Skills section */}
       <div className="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-transparent to-[#FCFCFC] -translate-y-full pointer-events-none z-0" />
 
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-16 lg:gap-24 pb-32 border-b border-black/5 text-center lg:text-left">
-
-        {/* Left Side: Text and Secondary Button */}
         <div className="flex-1 w-full max-w-2xl mx-auto flex flex-col items-center lg:items-start relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -56,7 +71,6 @@ export function Contact() {
           </motion.div>
         </div>
 
-        {/* Right Side: Contact Form */}
         <div className="flex-1 w-full max-w-md mx-auto lg:max-w-none relative z-10 mt-8 lg:mt-6">
           <motion.form
             onSubmit={handleSubmit}
@@ -110,17 +124,17 @@ export function Contact() {
 
             <motion.button
               type="submit"
+              disabled={isSubmitting}
               whileTap={{ scale: 0.97 }}
               whileHover={{ scale: 1.02 }}
-              className="mt-4 flex items-center justify-center gap-3 w-full lg:w-max px-8 py-4 lg:px-12 bg-black text-white rounded-full font-medium transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-[#1a1a1a] cursor-none"
+              className={`mt-4 flex items-center justify-center gap-3 w-full lg:w-max px-8 py-4 lg:px-12 bg-black text-white rounded-full font-medium transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.2)] hover:bg-[#1a1a1a] cursor-none ${isSubmitting ? "opacity-50" : ""}`}
             >
-              Send Message <Send className="w-4 h-4" />
+              {isSubmitting ? "Sending..." : "Send Message"} <Send className="w-4 h-4" />
             </motion.button>
           </motion.form>
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between pt-12 pb-4">
         <p className="text-black/60 text-sm font-medium mb-4 md:mb-0 tracking-wide uppercase">
           © {new Date().getFullYear()} Deepak Profile
