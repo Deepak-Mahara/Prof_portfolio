@@ -13,6 +13,7 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showResume, setShowResume] = useState(false);
 
   return (
     <>
@@ -43,12 +44,12 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <a
-            href="#"
+          <button
+            onClick={() => setShowResume(true)}
             className="ml-4 px-6 py-2.5 border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300"
           >
             Resume
-          </a>
+          </button>
         </motion.nav>
 
         {/* Mobile Toggle */}
@@ -95,17 +96,48 @@ export function Navbar() {
                   {link.name}
                 </motion.a>
               ))}
-              <motion.a
-                href="#"
+              <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * navLinks.length + 0.2 }}
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  setShowResume(true);
+                }}
                 className="mt-8 px-8 py-3 border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-300"
               >
                 Resume
-              </motion.a>
+              </motion.button>
             </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Resume Modal Overlay */}
+      <AnimatePresence>
+        {showResume && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[70] bg-black text-white flex flex-col p-6 pointer-events-auto"
+          >
+            <div className="flex justify-between items-center w-full mb-6 mix-blend-difference">
+              <div className="font-bold text-lg tracking-widest uppercase">
+                Resume
+              </div>
+              <button onClick={() => setShowResume(false)} className="p-2">
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="flex-1 w-full bg-white rounded-lg overflow-hidden">
+              <iframe
+                src="/certificates/CVLatest.pdf"
+                className="w-full h-full border-none"
+                title="Resume"
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
